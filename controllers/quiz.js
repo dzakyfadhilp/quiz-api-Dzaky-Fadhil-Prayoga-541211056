@@ -104,3 +104,16 @@ exports.getByCategoryId = async (req, res) => {
         data: quizzes,
     });
 }
+
+exports.getByLevelId = async (req, res) => {
+    const id = req.params.id
+    const quizzes = await Quiz.findAll({
+        where : {
+            categoryId: id
+        }
+    })
+    res.json({
+        message: `Quizzes retrieved succesfully with levelId=${id}.`,
+        data: quizzes,
+    });
+}
